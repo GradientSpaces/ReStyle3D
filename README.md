@@ -1,4 +1,4 @@
-## ReStyle3D: Scene-Level Appearance Transfer with Semantic Correspondences
+## Scene-Level Appearance Transfer with Semantic Correspondences
 
 #### Coming soon...
 <!--
