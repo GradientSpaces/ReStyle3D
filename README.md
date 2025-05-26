@@ -86,7 +86,6 @@ python restyle_scene.py   \
  --scene_path demo/scene_transfer/bedroom/  \
  --scene_type bedroom   \
  --style_path demo/design_styles/bedroom/pexels-itsterrymag-2631746
-
 ```
 
 ### 📂 Dataset: SceneTransfer
