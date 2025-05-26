@@ -66,9 +66,9 @@ bash scripts/download_weights.sh
 
 ## 🚀 Usage
 
-We prepare demo data for you:
+We download our dataset:
 ```
-bash scripts/download_demo.sh
+bash scripts/download_data.sh
 ```
 
 ### 🎮 Demo (Single-view)
