@@ -1,31 +1,8 @@
-<!-- <p align="center">
-  <h2 align="center">🎨 ReStyle3D: Scene-Level Appearance Transfer with Semantic Correspondences</h2>
-  <p align="center">
-    <a href="https://www.zhuliyuan.net/"><strong>Liyuan Zhu</strong></a><sup>1</sup>
-    ·
-    <a href="https://primecai.github.io/"><strong>Shengqu Cai</strong></a><sup>1,*</sup>
-    ·
-    <a href="https://shengyuh.github.io/"><strong>Shengyu Huang</strong></a><sup>2,*</sup>
-    ·
-    <a href="https://stanford.edu/~gordonwz/"><strong>Gordon Wetzstein</strong></a><sup>1</sup>
-    ·
-    <a href="https://www.najikhosravan.com/"><strong>Naji Khosravan</strong></a><sup>3</sup>
-    ·
-    <a href="https://ir0.github.io/"><strong>Iro Armeni</strong></a><sup>1</sup>
-</p>
-<p align="center"><strong>ACM SIGGRAPH 2025</strong></a>
-<p align="center">
-    <sup>1</sup>Stanford University · <sup>2</sup>NVIDIA Research · <sup>3</sup>Zillow Group
-</p>
-<p align="center">
-    <sup>*</sup>Equal contribution
-</p> -->
-
 # 🎨 ReStyle3D: Scene-Level Appearance Transfer with Semantic Correspondences
 
 ### ACM SIGGRAPH 2025
 
- [![ProjectPage](https://img.shields.io/badge/Project_Page-ReStyle3D-blue)](https://restyle3d.github.io/) [![arXiv](https://img.shields.io/badge/arXiv-2502.10377-blue?logo=arxiv&color=%23B31B1B)](https://arxiv.org/abs/2502.10377) [![Hugging Face (LCM) Space](https://img.shields.io/badge/🤗%20Hugging%20Face%20-Space-yellow)](https://huggingface.co/spaces/) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/) [![License](https://img.shields.io/badge/License-Apache--2.0-929292)](https://www.apache.org/licenses/LICENSE-2.0)
+ [![ProjectPage](https://img.shields.io/badge/Project_Page-ReStyle3D-blue)](https://restyle3d.github.io/) [![arXiv](https://img.shields.io/badge/arXiv-2502.10377-blue?logo=arxiv&color=%23B31B1B)](https://arxiv.org/abs/2502.10377) [![Hugging Face (LCM) Space](https://img.shields.io/badge/🤗%20Hugging%20Face%20-Space-yellow)](https://huggingface.co/gradient-spaces/ReStyle3D) [![License](https://img.shields.io/badge/License-Apache--2.0-929292)](https://www.apache.org/licenses/LICENSE-2.0)
 
 Official implementation of the paper titled "Scene-level Appearance Transfer with Semantic Correspondences".
 
@@ -60,18 +37,112 @@ with multi-view consistency to achieve precise and coherent stylization.
   </a>
 </p>
 
-### (Under construction)
-<!--
-**ReStyle3D/ReStyle3D** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
-Here are some ideas to get you started:
+## 🛠️ Setup
+### ✅ Tested Environments
+- Ubuntu 22.04 LTS, Python 3.10.15, CUDA 12.2, GeForce RTX 4090/3090
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+- CentOS Linux 7, Python 3.12.1, CUDA 12.4, NVIDIA A100
+
+### 📦 Repository
+```
+git clone git@github.com:GradientSpaces/ReStyle3D.git
+cd ReStyle3D
+```
+
+### 💻 Installation 
+```
+conda create -n restyle3d python=3.10
+conda activate restyle3d
+pip install -r requirements.txt
+```
+
+### 📦 Pretrained Checkpoints
+Download the pretrained models by running:
+```
+bash scripts/download_weights.sh
+```
+
+
+## 🚀 Usage
+
+We prepare demo data for you:
+```
+bash scripts/download_demo.sh
+```
+
+### 🎮 Demo (Single-view)
+We include 3 demo images to run semantic appearance transfer:
+```
+python restyle_image.py
+```
+
+
+
+### 🎨 Stylizing Multi-view Scenes 
+To run on a single scene and style:
+```
+python restyle_scene.py   \
+ --scene_path demo/scene_transfer/bedroom/  \
+ --scene_type bedroom   \
+ --style_path demo/design_styles/bedroom/pexels-itsterrymag-2631746
+
+```
+
+### 📂 Dataset: SceneTransfer
+We organize the data into two components:
+
+1. Interior Scenes:
+Multi-view real-world scans with aligned images, depth, and semantic segmentations.
+```
+📁 data/
+  └── interiors/
+      ├── bedroom/
+      │   ├── 0/
+      │   │   ├── images/      # multi-view RGB images
+      │   │   ├── depth/       # depth maps
+      │   │   └── seg_dict/    # semantic segmentation dictionaries
+      │   └── 1/
+      │       └── ...
+      ├── living_room/
+      └── kitchen/
+```
+2. Design Styles:
+Style examplars with precomputed semantic segmentation.
+```
+📁 data/
+  └── design_styles/
+      ├── bedroom/
+      │   └── pexels-itsterrymag-2631746/
+      │       ├── image.jpg        # style reference image
+      │       ├── seg_dict.pth     # semantic segmentation dictionary 
+      │       └── seg.png          # segmentation visualization
+      ├── living_room/
+      └── kitchen/
+```
+
+
+
+
+
+## 🚧 TODO
+- [ ] Release full dataset
+- [ ] Release evaluation code
+- [ ] Customize dataset
+
+
+## 🙏 Acknowledgement
+Our codebase is built on top of the following works:
+- [Cross-image-attention](https://github.com/garibida/cross-image-attention) 
+- [ODISE](https://github.com/NVlabs/ODISE)
+- [ViewCrafter](https://github.com/Drexubery/ViewCrafter)
+- [GenWarp](https://github.com/sony/genwarp)
+- [DUSt3R](https://github.com/naver/dust3r) 
+
+We appreciate the open-source efforts from the authors.
+
+## 📫 Contact
+If you encounter any issues or have questions, feel free to reach out: [Liyuan Zhu](liyzhu@stanford.edu).
+
+
+

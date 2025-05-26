@@ -1,0 +1,22 @@
+# Use PyTorch CUDA wheels in addition to PyPI
+--extra-index-url https://download.pytorch.org/whl/cu121
+
+torch==2.5.0
+torchvision==0.20.0
+torchaudio==2.5.0
+
+# Everything below comes from the default PyPI index
+diffusers==0.31.0
+xformers==0.0.28.post2
+transformers==4.43.2
+accelerate==1.0.1
+einops
+roma
+open3d
+scikit-learn
+pyrallis
+jaxtyping
+opencv-python
+matplotlib
+huggingface_hub[cli]
+git+https://github.com/pesser/splatting
