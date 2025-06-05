@@ -6,7 +6,7 @@
 
 Official implementation of the paper titled "Scene-level Appearance Transfer with Semantic Correspondences".
 
-[Liyuan Zhu](http://www.kebingxin.com/)<sup>1</sup>,
+[Liyuan Zhu](https://www.zhuliyuan.net/)<sup>1</sup>,
 [Shengqu Cai](https://primecai.github.io/)<sup>1,\*</sup>,
 [Shengyu Huang](https://shengyuh.github.io/)<sup>2,\*</sup>,
 [Gordon Wetzstein](https://stanford.edu/~gordonwz/)<sup>1</sup>,
